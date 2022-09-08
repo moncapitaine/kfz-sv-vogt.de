@@ -1,6 +1,6 @@
 <svelte:head>
-	<title>KFZ-Sachverständigenbüro: Max Vogt</title>
-	<meta name="description" content="Kontakt Max Vogt KFZ-Sachverständingenbüro" />
+	<title>KFZ-Sachverständigenbüro: Inhaber Max Vogt</title>
+	<meta name="description" content="Kontakt zu Max Vogt KFZ-Sachverständigenbüro" />
 	<link rel="canonical" href="https://kfz-sv-vogt.de/contact" />
 </svelte:head>
 

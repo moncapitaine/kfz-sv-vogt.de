@@ -1,6 +1,6 @@
 <svelte:head>
 	<title>KFZ-Sachverständigenbüro: Hintergründe</title>
-	<meta name="description" content="About this app" />
+	<meta name="description" content="Wer ist Max Vogt, Inhaber des Sachverständigenbüros in Freising" />
 	<link rel="canonical" href="https://kfz-sv-vogt.de/about" />
 </svelte:head>
 
