@@ -2,7 +2,7 @@
 	export let open = false;
 </script>
 
-<button class:open on:click={() => (open = !open)} class="z-50 right-1 top-1 relative">
+<button class:open on:click={() => (open = !open)} class="z-50 right-1 top-1 relative" aria-label="Navigation">
 	<svg width="32" height="32">
 		<line id="top" x1="0" y1="9" x2="32" y2="9" style="transition: transform 0.5s ease-in-out" />
 		<line
