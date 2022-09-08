@@ -3,11 +3,6 @@
 	import '../app.css';
 </script>
 
-<svelte:head>
-	<title>KFZ-SV Max Vogt</title>
-	<meta name="description" content="KFZ-Sachverständigenbüro Max Vogt" />
-</svelte:head>
-
 <Header />
 
 <main class="flex flex-col items-center">
