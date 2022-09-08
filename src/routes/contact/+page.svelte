@@ -9,6 +9,8 @@
 		<h2 class="text-xl">Max Vogt</h2>
 		<h2 class="text-xl">Attachinger Weg 37</h2>
 		<h2 class="text-xl">85356 Freising</h2>
-		<a class="text-xl pt-2 block" href="mailto:max.vogt@kfz-sv-vogt.de?subject=Anfrage%20KFZ-SV">max.vogt@kfz-sv-vogt.de</a>
+		<a class="text-xl pt-2 block" href="mailto:max.vogt@kfz-sv-vogt.de?subject=Anfrage%20KFZ-SV"
+			>max.vogt@kfz-sv-vogt.de</a
+		>
 	</article>
 </section>
