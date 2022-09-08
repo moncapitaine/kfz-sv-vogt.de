@@ -1,6 +1,7 @@
 <svelte:head>
-	<title>KFZ-Sachverständigenbüro Max Vogt - Leistungen</title>
+	<title>KFZ-Sachverständigenbüro: KFZ Gutachten in Freising</title>
 	<meta name="description" content="Leistungen des KFZ-Sachverständigenbüro Max Vogt in Freising" />
+	<link rel="canonical" href="https://kfz-sv-vogt.de" />
 </svelte:head>
 
 <section class="flex flex-wrap flex-row gap-5 mb-6 mt-14 m-6">

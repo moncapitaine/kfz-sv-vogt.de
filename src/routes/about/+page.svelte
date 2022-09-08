@@ -1,6 +1,7 @@
 <svelte:head>
-	<title>About</title>
+	<title>KFZ-Sachverständigenbüro: Hintergründe</title>
 	<meta name="description" content="About this app" />
+	<link rel="canonical" href="https://kfz-sv-vogt.de/about" />
 </svelte:head>
 
 <ul class="flex flex-col gap-6 font-title p-4 list-disc">
