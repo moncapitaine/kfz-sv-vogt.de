@@ -1,10 +1,16 @@
 <script lang="ts">
+	import { sideMenuOpen } from './navStore';
 	import { page } from '$app/stores';
 	export let href = '/';
 	export let title = 'Title';
 </script>
 
-<a class="border-transparent border-2" class:active={$page.url.pathname === href} {href}>{title}</a>
+<a
+	class="border-transparent border-2"
+	class:active={$page.url.pathname === href}
+	{href}
+	on:click={() => sideMenuOpen.update(() => false)}>{title}</a
+>
 
 <style>
 	.active {

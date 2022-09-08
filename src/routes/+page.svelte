@@ -1,6 +1,9 @@
 <svelte:head>
 	<title>Sachverständigenbüro: KFZ Gutachten in Freising</title>
-	<meta name="description" content="Schadensgutachten und Wertgutachten für Kraftfahrzeuge in Freising" />
+	<meta
+		name="description"
+		content="Schadensgutachten und Wertgutachten für Kraftfahrzeuge in Freising"
+	/>
 	<link rel="canonical" href="https://kfz-sv-vogt.de" />
 </svelte:head>
 

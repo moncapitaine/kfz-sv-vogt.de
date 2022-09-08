@@ -1,5 +1,8 @@
 <script>
-	export let open = false;
+	import { sideMenuOpen } from './navStore';
+
+	let open = false;
+	sideMenuOpen.subscribe((value) => (open = value));
 </script>
 
 <div
