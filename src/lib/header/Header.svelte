@@ -1,13 +1,12 @@
 <script lang="ts">
-	import Nav from '$lib/nav/nav.svelte';
 	import logoNormal from './logo.svg';
 	import logoBeam from './logo-beam.svg';
 
 	let logo = logoNormal;
 </script>
 
-<header class="flex sm:flex-col p-3 gap-2 sm:gap-2 items-center">
-	<a href="/" class="w-14 sm:w-full sm:flex-1 max-h-32 flex justify-center sm:mb-6" alt="Home">
+<header class="container mt-8 flex justify-center">
+	<a href="/" class="" alt="Home">
 		<img
 			on:mouseenter={() => (logo = logoBeam)}
 			on:blur={() => (logo = logoNormal)}
@@ -17,15 +16,14 @@
 			class="hover:drop-shadow-sm hover:animate-pulse"
 		/>
 	</a>
-	<div class="sm:flex w-3/4 sm:w-full sm:flex-1 sm:flex-col">
-		<h1
-			class="flex-1 sm:text-center uppercase font-title sm:text-3xl font-semibold tracking-widest"
-		>
+	<article class="flex flex-col justify-center">
+		<h1 class="uppercase text-center font-title text-2xl tracking-widest">
 			KFZ-Sach&shy;verständigen&shy;büro
 		</h1>
-		<h2 class="flex-1 sm:text-center uppercase font-title sm:text-4xl tracking-widest">Max Vogt</h2>
-	</div>
-	<div class="self-center">
-		<Nav />
-	</div>
+		<h2 class="uppercase text-center font-title text-4xl font-semibold tracking-widest">
+			Max Vogt
+		</h2>
+		<p class="text-center font-title text-xl tracking-widest">Freising - Landshut - München</p>
+		<p class="text-center font-title text-xl tracking-widest">Telefon 0176 / 244 33 906</p>
+	</article>
 </header>

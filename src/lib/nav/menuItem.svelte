@@ -3,19 +3,19 @@
 	import { page } from '$app/stores';
 	export let href = '/';
 	export let title = 'Title';
+
+	let active = $page.url.pathname === href;
 </script>
 
-<a
-	class="border-transparent border-2"
-	class:active={$page.url.pathname === href}
-	{href}
-	on:click={() => sideMenuOpen.update(() => false)}>{title}</a
+<a class:inactive={!active} class:active {href} on:click={() => sideMenuOpen.update(() => false)}
+	>{title}</a
 >
 
 <style>
-	.active {
-		border-bottom: solid 2px red;
-		transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-		transition-duration: 2s;
+	a.inactive {
+		@apply border-b-transparent border-b-2 opacity-40;
+	}
+	a.active {
+		@apply border-b-red-800 border-b-2 rounded-none;
 	}
 </style>

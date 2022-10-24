@@ -3,9 +3,16 @@ module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		fontFamily: {
-			title: ['Fira Sans Condensed']
+			sans: ['Fira Sans Condensed']
 		},
-		extend: {}
+		backgroundImage: {
+			car1: 'url(/background.png)'
+		},
+		extend: {
+			colors: {
+				'btn-neutral' : '#D9',
+			}
+		}
 	},
 	plugins: []
 };
