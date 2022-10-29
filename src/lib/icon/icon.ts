@@ -1,0 +1,1 @@
+export type IconName = 'crash' | 'costs' | 'repair' | 'oldtimer';

@@ -5,9 +5,6 @@ module.exports = {
 		fontFamily: {
 			sans: ['Fira Sans Condensed']
 		},
-		backgroundImage: {
-			car1: 'url(/background.png)'
-		},
 		extend: {
 			colors: {
 				'btn-neutral' : '#D9',

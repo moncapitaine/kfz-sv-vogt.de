@@ -13,10 +13,15 @@
 	<link rel="canonical" href="https://kfz-sv-vogt.de" />
 </svelte:head>
 
-<Header />
+<header class="container mt-12">
+	<Header />
+</header>
 
 <main class="container mt-12 flex justify-center">
 	<slot />
 </main>
 
-<Nav />
+<footer class="absolute bottom-0 border-t-2 pt-2 pb-6 bg-white z-50 w-full">
+	<Nav />
+</footer>
+

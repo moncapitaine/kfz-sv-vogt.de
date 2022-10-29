@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-car1 bg-right-top bg-no-repeat
+  @apply bg-[url('/background.png')] bg-cover bg-no-repeat
 }

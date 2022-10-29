@@ -1,151 +1,111 @@
 <script lang="typescript">
-	import { slide } from 'svelte/transition';
-
-	type ItemType =
+	import { crossfade, fade, scale, slide } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
+	import Icon from '../lib/icon/Icon.svelte';
+	import type { IconName } from '$lib/icon/icon';
+	import fadeScale from '$lib/transition-fade-scale';
+	type CategoryName =
 		| 'schadensgutachten'
 		| 'gebrauchtwagen-check'
 		| 'kostenvoranschlag'
 		| 'oldtimer-gutachten';
-	let selectedType: ItemType = 'schadensgutachten';
+	let selectedCategoryName: CategoryName = 'schadensgutachten';
 	const navClassSelected =
 		"bg-[url('/bg-leistung-selected.svg')] bg-cover bg-center h-18 pl-5 py-2 w-[24em] text-left inline-flex items-center gap-3";
 	const navClass =
 		'text-gray-500 hover:text-black bg-[#d9d9d9] rounded h-18 pl-5 py-2 w-[18em] text-left inline-flex items-center gap-3';
-	const selectItem = (newType: ItemType) => (selectedType = newType);
+	const imageClass = 'ml-4 h-50 hidden';
+	const imageClassSelected = 'ml-4 h-50 visible';
+	const selectItem = (newCategoryName: CategoryName) => (selectedCategoryName = newCategoryName);
+
+	const categories: Array<{
+		name: CategoryName;
+		title: string;
+		imageSource: string;
+		icon: IconName;
+	}> = [
+		{
+			name: 'schadensgutachten',
+			title: 'Schadensgutachten',
+			imageSource: '/schaden-background.png',
+			icon: 'crash'
+		},
+		{
+			name: 'gebrauchtwagen-check',
+			title: 'Gebrauchtwagen-Check',
+			imageSource: '/gebrauchtwagen-check-background.png',
+			icon: 'repair'
+		},
+		{
+			name: 'kostenvoranschlag',
+			title: 'Kostenvoranschlag',
+			imageSource: '/kostenvoranschlag-background.png',
+			icon: 'costs'
+		},
+		{
+			name: 'oldtimer-gutachten',
+			title: 'Oldtimer-Gutachten',
+			imageSource: '/oldtimer-gutachten-background.png',
+			icon: 'oldtimer'
+		}
+	];
 </script>
 
 <article class="w-[1024px] flex">
 	<nav class="z-20 flex flex-col gap-2 text-2xl pt-12">
-		<button
-			in:slide={{ duration: 1000 }}
-			on:click={() => selectItem('schadensgutachten')}
-			type="button"
-			class={selectedType === 'schadensgutachten' ? navClassSelected : navClass}
-		>
-			<svg
-				class="w-10 h-10"
-				viewBox="0 0 51 40"
-				fill="currentColor"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					d="M13.9512 0.625C13.428 0.625 12.9683 0.9375 12.7701 1.41406L10.4396 7.19531L4.40731 5.38281C3.90792 5.23438 3.3689 5.39844 3.0439 5.79687C2.7189 6.19531 2.67926 6.75 2.93292 7.19531L6.06402 12.5937L0.86402 16.125C0.435971 16.4141 0.229874 16.9297 0.348776 17.4297C0.467679 17.9297 0.879874 18.3047 1.38719 18.3828L7.62561 19.3359L7.1817 25.5469C7.14207 26.0547 7.42743 26.5391 7.89512 26.7578C8.3628 26.9766 8.91768 26.8984 9.30609 26.5547L12.1043 24.0156L12.8573 21.25L13.6817 18.2344C14.3158 15.8984 16.0994 14.1641 18.2713 13.4766L21.5213 8.85156C22.4171 7.57813 23.614 6.59375 24.9695 5.94531C24.9378 5.89844 24.9061 5.85156 24.8665 5.80469C24.5415 5.40625 24.0024 5.24219 23.503 5.39062L17.4628 7.19531L15.1323 1.41406C14.9341 0.9375 14.4744 0.625 13.9512 0.625ZM29.1469 12.6172L39.8957 15.4531C40.411 15.5938 40.7915 16.0312 40.8311 16.5625L41.1957 20.9766L25.2232 16.7578L27.7756 13.1172C28.0768 12.6797 28.6317 12.4844 29.1469 12.6172V12.6172ZM23.6061 10.2734L19.8091 15.6875C18.0969 15.9219 16.6146 17.1406 16.139 18.8906L15.3146 21.9062L13.9988 26.7344L13.3408 29.1484C12.9762 30.4844 13.7848 31.8516 15.1323 32.2109L16.361 32.5312C17.7165 32.8906 19.1037 32.0937 19.4683 30.7656L20.1262 28.3516L39.7293 33.5313L39.0713 35.9453C38.7067 37.2813 39.5152 38.6484 40.8628 39.0078L42.0915 39.3281C43.4469 39.6875 44.8341 38.8906 45.1988 37.5625L45.8567 35.1484L47.1646 30.3125L47.989 27.2969C48.4646 25.5469 47.7908 23.7656 46.4354 22.7109L45.8963 16.1484C45.6823 13.5156 43.8037 11.3047 41.2195 10.6172L30.4549 7.78906C27.8628 7.10156 25.1201 8.10156 23.5982 10.2734H23.6061ZM21.2677 24.125C20.253 23.8594 19.6506 22.8281 19.9201 21.8281C20.1896 20.8281 21.236 20.2344 22.2506 20.5C23.2652 20.7656 23.8677 21.7969 23.5982 22.7969C23.3287 23.7969 22.2823 24.3906 21.2677 24.125ZM43.2012 27.9766C42.9317 28.9766 41.8854 29.5703 40.8707 29.3047C39.8561 29.0391 39.2537 28.0078 39.5232 27.0078C39.7927 26.0078 40.839 25.4141 41.8537 25.6797C42.8683 25.9453 43.4707 26.9766 43.2012 27.9766Z"
+		{#each categories as category (category.name)}
+			<div animate:flip>
+				<button
+					on:click={() => selectItem(category.name)}
+					type="button"
+					class={selectedCategoryName === category.name ? navClassSelected : navClass}
+				>
+					<Icon class="w-10 h-10" name={category.icon} />
+					{category.title}
+				</button>
+				<img
+					transition:scale
+					class={selectedCategoryName === category.name ? imageClassSelected : imageClass}
+					src={category.imageSource}
+					alt={category.title}
 				/>
-			</svg>
-			Schadensgutachten
-		</button>
-		{#if selectedType === 'schadensgutachten'}
-			<div class="ml-4 h-50 transition" in:slide>
-				<img src="/schaden-background.png" alt="Schaden" />
 			</div>
-		{/if}
-		<button
-			in:slide
-			on:click={() => selectItem('gebrauchtwagen-check')}
-			type="button"
-			class={selectedType === 'gebrauchtwagen-check' ? navClassSelected : navClass}
-		>
-			<svg
-				class="w-10 h-10"
-				viewBox="0 0 51 40"
-				fill="currentColor"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					d="M37.544 22.31L34.808 14.102C34.4111 12.907 33.6477 11.8674 32.6262 11.131C31.6048 10.3946 30.3772 9.99888 29.118 10H10.882C9.62278 9.99888 8.39523 10.3946 7.37377 11.131C6.35231 11.8674 5.5889 12.907 5.192 14.102L2.456 22.31C1.7286 22.6146 1.10742 23.1274 0.670469 23.7839C0.233514 24.4404 0.000261325 25.2114 0 26V32C0 33.476 0.808 34.752 2 35.446V38C2 38.5304 2.21071 39.0391 2.58579 39.4142C2.96086 39.7893 3.46957 40 4 40H6C6.53043 40 7.03914 39.7893 7.41421 39.4142C7.78929 39.0391 8 38.5304 8 38V36H32V38C32 38.5304 32.2107 39.0391 32.5858 39.4142C32.9609 39.7893 33.4696 40 34 40H36C36.5304 40 37.0391 39.7893 37.4142 39.4142C37.7893 39.0391 38 38.5304 38 38V35.446C38.6068 35.098 39.1111 34.5963 39.4623 33.9913C39.8134 33.3863 39.9989 32.6995 40 32V26C40 24.338 38.986 22.916 37.544 22.31ZM10.882 14H29.116C29.5359 13.9999 29.9452 14.132 30.2859 14.3775C30.6266 14.6231 30.8813 14.9696 31.014 15.368L33.226 22H6.774L8.984 15.368C9.258 14.55 10.022 14 10.882 14V14ZM7 32C6.6059 31.9999 6.21569 31.9221 5.85164 31.7712C5.4876 31.6202 5.15684 31.3991 4.87827 31.1203C4.31566 30.5573 3.99973 29.7939 4 28.998C4.00027 28.2021 4.3167 27.4389 4.87968 26.8763C5.44266 26.3137 6.20609 25.9977 7.002 25.998C7.79791 25.9983 8.56113 26.3147 9.12373 26.8777C9.68634 27.4407 10.0023 28.2041 10.002 29C10.0017 29.7959 9.6853 30.5591 9.12232 31.1217C8.55934 31.6843 7.79591 32.0003 7 32V32ZM33 32C32.2041 31.9997 31.4409 31.6833 30.8783 31.1203C30.3157 30.5573 29.9997 29.7939 30 28.998C30.0003 28.2021 30.3167 27.4389 30.8797 26.8763C31.4427 26.3137 32.2061 25.9977 33.002 25.998C33.7979 25.9983 34.5611 26.3147 35.1237 26.8777C35.6863 27.4407 36.0023 28.2041 36.002 29C36.0017 29.7959 35.6853 30.5591 35.1223 31.1217C34.5593 31.6843 33.7959 32.0003 33 32V32ZM6.554 6C7.248 7.19 8.524 8 10 8C11.476 8 12.752 7.19 13.446 6H26.556C27.248 7.19 28.524 8 30 8C31.476 8 32.752 7.19 33.446 6H30V2H33.446C32.752 0.81 31.476 0 30 0C28.524 0 27.248 0.81 26.554 2H13.446C12.752 0.81 11.476 0 10 0C8.524 0 7.248 0.81 6.554 2H10V6H6.554Z"
-				/>
-			</svg>
-			Gebrauchtwagen-Check</button
-		>
-		{#if selectedType === 'gebrauchtwagen-check'}
-			<div class="ml-4 h-50 transition" in:slide>
-				<img src="/gebrauchtwagen-check-background.png" alt="Gebrauchtwagen-Check" />
-			</div>
-		{/if}
-		<button
-			in:slide
-			on:click={() => selectItem('kostenvoranschlag')}
-			type="button"
-			class={selectedType === 'kostenvoranschlag' ? navClassSelected : navClass}
-		>
-			<svg
-				class="w-10 h-10"
-				viewBox="0 0 51 40"
-				fill="currentColor"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					fill-rule="evenodd"
-					clip-rule="evenodd"
-					d="M20 40C25.3043 40 30.3914 37.8929 34.1421 34.1421C37.8929 30.3914 40 25.3043 40 20C40 14.6957 37.8929 9.60859 34.1421 5.85786C30.3914 2.10714 25.3043 0 20 0C14.6957 0 9.60859 2.10714 5.85786 5.85786C2.10714 9.60859 0 14.6957 0 20C0 25.3043 2.10714 30.3914 5.85786 34.1421C9.60859 37.8929 14.6957 40 20 40V40ZM16.995 13.625C18.275 11.95 19.8325 11.25 21.25 11.25C22.6675 11.25 24.225 11.95 25.505 13.625C25.8108 14.0083 26.2546 14.2565 26.7412 14.3164C27.2279 14.3764 27.7186 14.2434 28.1083 13.9459C28.4981 13.6483 28.7557 13.21 28.8262 12.7248C28.8966 12.2395 28.7741 11.746 28.485 11.35C26.5925 8.875 23.99 7.5 21.25 7.5C18.51 7.5 15.9075 8.875 14.015 11.35C13.178 12.4555 12.5231 13.6877 12.075 15H9.375C8.87772 15 8.40081 15.1975 8.04917 15.5492C7.69754 15.9008 7.5 16.3777 7.5 16.875C7.5 17.3723 7.69754 17.8492 8.04917 18.2008C8.40081 18.5525 8.87772 18.75 9.375 18.75H11.3C11.2341 19.582 11.2341 20.418 11.3 21.25H9.375C8.87772 21.25 8.40081 21.4475 8.04917 21.7992C7.69754 22.1508 7.5 22.6277 7.5 23.125C7.5 23.6223 7.69754 24.0992 8.04917 24.4508C8.40081 24.8025 8.87772 25 9.375 25H12.075C12.5233 26.3122 13.1782 27.5444 14.015 28.65C15.9075 31.125 18.51 32.5 21.25 32.5C23.99 32.5 26.5925 31.125 28.485 28.65C28.7741 28.254 28.8966 27.7605 28.8262 27.2752C28.7557 26.79 28.4981 26.3517 28.1083 26.0541C27.7186 25.7566 27.2279 25.6236 26.7412 25.6836C26.2546 25.7435 25.8108 25.9917 25.505 26.375C24.225 28.05 22.6675 28.75 21.25 28.75C19.8325 28.75 18.275 28.05 16.995 26.375C16.6673 25.9441 16.3802 25.4838 16.1375 25H20.625C21.1223 25 21.5992 24.8025 21.9508 24.4508C22.3025 24.0992 22.5 23.6223 22.5 23.125C22.5 22.6277 22.3025 22.1508 21.9508 21.7992C21.5992 21.4475 21.1223 21.25 20.625 21.25H15.065C14.9786 20.4189 14.9786 19.5811 15.065 18.75H20.625C21.1223 18.75 21.5992 18.5525 21.9508 18.2008C22.3025 17.8492 22.5 17.3723 22.5 16.875C22.5 16.3777 22.3025 15.9008 21.9508 15.5492C21.5992 15.1975 21.1223 15 20.625 15H16.1375C16.3825 14.5125 16.6675 14.05 16.995 13.625Z"
-				/>
-			</svg>
-			Kostenvoranschlag</button
-		>
-		{#if selectedType === 'kostenvoranschlag'}
-			<div class="ml-4 h-50 transition" in:slide>
-				<img src="/kostenvoranschlag-background.png" alt="Kostenvoranschlag" />
-			</div>
-		{/if}
-		<button
-			in:slide
-			on:click={() => selectItem('oldtimer-gutachten')}
-			type="button"
-			class={selectedType === 'oldtimer-gutachten' ? navClassSelected : navClass}
-		>
-			<svg
-				class="w-10 h-10"
-				viewBox="0 0 51 40"
-				fill="currentColor"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					fill-rule="evenodd"
-					clip-rule="evenodd"
-					d="M11.306 5.44049C10.4192 5.6498 9.60811 6.0917 8.96049 6.71831C8.31288 7.34493 7.85346 8.13237 7.632 8.99534L5.372 17.8152C4.38785 18.1459 3.53405 18.7678 2.92961 19.5941C2.32517 20.4204 2.0002 21.41 2 22.425V28.275C2 29.5679 2.52678 30.8079 3.46447 31.7221C4.40215 32.6364 5.67392 33.15 7 33.15H33C34.3261 33.15 35.5979 32.6364 36.5355 31.7221C37.4732 30.8079 38 29.5679 38 28.275V22.425C37.9999 21.4103 37.6753 20.4209 37.0712 19.5946C36.4671 18.7683 35.6138 18.1463 34.63 17.8152L32.368 8.99534C32.1467 8.13261 31.6876 7.34534 31.0403 6.71875C30.3931 6.09215 29.5824 5.65012 28.696 5.44049C25.8496 4.76158 22.9303 4.41659 20 4.41284C17.1 4.41284 14.2 4.75604 11.304 5.44049H11.306ZM7 21.45C7.44612 21.4499 7.8794 21.3043 8.23092 21.0365C8.58245 20.7687 8.83204 20.3939 8.94 19.9719L11.512 9.94109C11.5563 9.76821 11.6483 9.61045 11.778 9.48497C11.9078 9.35949 12.0703 9.27108 12.248 9.22934C14.7854 8.62416 17.3878 8.31649 20 8.31284C22.6122 8.31628 25.2147 8.62396 27.752 9.22934C27.9293 9.27139 28.0914 9.35995 28.2208 9.48541C28.3502 9.61087 28.4419 9.76845 28.486 9.94109L31.058 19.9719C31.166 20.3939 31.4156 20.7687 31.7671 21.0365C32.1186 21.3043 32.5519 21.4499 32.998 21.45C33.2632 21.45 33.5176 21.5527 33.7051 21.7356C33.8926 21.9184 33.998 22.1664 33.998 22.425V28.275C33.998 28.5336 33.8926 28.7816 33.7051 28.9644C33.5176 29.1473 33.2632 29.25 32.998 29.25H6.998C6.73278 29.25 6.47843 29.1473 6.29089 28.9644C6.10336 28.7816 5.998 28.5336 5.998 28.275V22.425C5.998 22.1664 6.10336 21.9184 6.29089 21.7356C6.47843 21.5527 6.73278 21.45 6.998 21.45H7Z"
-				/>
-				<path
-					d="M33 25.35C33 26.1257 32.6839 26.8697 32.1213 27.4183C31.5587 27.9668 30.7956 28.275 30 28.275C29.2044 28.275 28.4413 27.9668 27.8787 27.4183C27.3161 26.8697 27 26.1257 27 25.35C27 24.5742 27.3161 23.8302 27.8787 23.2817C28.4413 22.7332 29.2044 22.425 30 22.425C30.7956 22.425 31.5587 22.7332 32.1213 23.2817C32.6839 23.8302 33 24.5742 33 25.35ZM13 25.35C13 26.1257 12.6839 26.8697 12.1213 27.4183C11.5587 27.9668 10.7956 28.275 10 28.275C9.20435 28.275 8.44129 27.9668 7.87868 27.4183C7.31607 26.8697 7 26.1257 7 25.35C7 24.5742 7.31607 23.8302 7.87868 23.2817C8.44129 22.7332 9.20435 22.425 10 22.425C10.7956 22.425 11.5587 22.7332 12.1213 23.2817C12.6839 23.8302 13 24.5742 13 25.35ZM8 30.225C8.79565 30.225 9.55871 30.5332 10.1213 31.0817C10.6839 31.6302 11 32.3742 11 33.15V35.1C11 35.8757 10.6839 36.6197 10.1213 37.1683C9.55871 37.7168 8.79565 38.025 8 38.025C7.20435 38.025 6.44129 37.7168 5.87868 37.1683C5.31607 36.6197 5 35.8757 5 35.1V33.15C5 32.3742 5.31607 31.6302 5.87868 31.0817C6.44129 30.5332 7.20435 30.225 8 30.225V30.225ZM32 30.225C32.7956 30.225 33.5587 30.5332 34.1213 31.0817C34.6839 31.6302 35 32.3742 35 33.15V35.1C35 35.8757 34.6839 36.6197 34.1213 37.1683C33.5587 37.7168 32.7956 38.025 32 38.025C31.2044 38.025 30.4413 37.7168 29.8787 37.1683C29.3161 36.6197 29 35.8757 29 35.1V33.15C29 32.3742 29.3161 31.6302 29.8787 31.0817C30.4413 30.5332 31.2044 30.225 32 30.225Z"
-				/>
-				<path
-					fill-rule="evenodd"
-					clip-rule="evenodd"
-					d="M24.39 9.75H15.61C14.6948 9.74973 13.8072 10.0555 13.0953 10.6161C12.3834 11.1768 11.8902 11.9586 11.698 12.831L10.84 16.731C10.7147 17.2998 10.7215 17.8887 10.8599 18.4546C10.9983 19.0206 11.2648 19.5491 11.6399 20.0016C12.015 20.454 12.4891 20.8189 13.0276 21.0696C13.5661 21.3202 14.1553 21.4502 14.752 21.45H25.248C25.8446 21.4502 26.4338 21.3203 26.9722 21.0696C27.5106 20.819 27.9847 20.454 28.3596 20.0015C28.7346 19.549 29.0009 19.0204 29.139 18.4545C29.2772 17.8886 29.2836 17.2997 29.158 16.731L28.3 12.831C28.1079 11.9589 27.615 11.1774 26.9035 10.6168C26.1919 10.0561 25.3048 9.75018 24.39 9.75V9.75ZM14.75 17.55L15.61 13.65H24.39L25.248 17.55H14.752H14.75Z"
-				/>
-			</svg>
-			Oldtimer-Gutachten</button
-		>
-		{#if selectedType === 'oldtimer-gutachten'}
-			<div class="ml-4 h-50 transition" in:slide>
-				<img src="/oldtimer-gutachten-background.png" alt="Oldtimer-Gutachten" />
-			</div>
-		{/if}
+		{/each}
 	</nav>
 	<aside
 		class="z-10 relative border-4 rounded-lg bg-gray-200 p-12 w-full opacity-70 border-gray-300 h-fit ml-[-2em]"
 	>
-		{#if selectedType === 'schadensgutachten'}
+		{#if selectedCategoryName === 'schadensgutachten'}
 			<h2 class="text-2xl mb-4">
 				Nach einem unverschuldeten Unfall haben Sie das Recht auf freie Wahl eines Sachverständigen
 				Ihres Vertrauens.
 			</h2>
 			<p class="text-xl mb-4">
-				Die Kosten dafür trägt die Haftpflichtversicherung des Unfallverursachers.
+				Die Kosten trägt die Haftpflichtversicherung des Unfallverursachers.
 			</p>
-			<p class='mb-4'>
+			<p class="mb-4">
 				Lediglich bei Bagatellschäden bis ca. 700 Euro besteht für die gegnerische
 				Haftpflichtversicherung keine Verpflichtung die Kosten zu tragen.
 			</p>
 			<p>Auf das Vorliegen eines Bagatellschadens werden Sie von mir hingewiesen.</p>
 		{/if}
-		{#if selectedType === 'gebrauchtwagen-check'}
+		{#if selectedCategoryName === 'gebrauchtwagen-check'}
 			<h2>Gebrauchtwagen-Check</h2>
 		{/if}
-		{#if selectedType === 'kostenvoranschlag'}
+		{#if selectedCategoryName === 'kostenvoranschlag'}
 			Hellas
 		{/if}
-		{#if selectedType === 'oldtimer-gutachten'}
-			<h2>Oldtimer-Gutachten</h2>
+		{#if selectedCategoryName === 'oldtimer-gutachten'}
+			<h2 class="text-2xl mb-4">Oldtimer-Wertgutachten</h2>
+			<p class="text-xl mb-4">
+				Das Wertgutachten für Ihren Oldtimer dient zur Versicherungseinstufung und als Grundlage für
+				einen Kauf oder Verkauf.
+			</p>
+			<ul class="text-xl mb-4 list-disc">
+				<li>Wertdarstellung im Schadenfall</li>
+				<li>Orientierungshilfe bei Kauf oder Verkauf</li>
+				<li>Einstufung bei der Kaskoversicherung</li>
+			</ul>
 		{/if}
 	</aside>
 </article>

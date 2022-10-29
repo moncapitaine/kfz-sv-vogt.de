@@ -5,7 +5,7 @@
 	let logo = logoNormal;
 </script>
 
-<header class="container mt-8 flex justify-center">
+<div class="flex justify-center">
 	<a href="/" class="" alt="Home">
 		<img
 			on:mouseenter={() => (logo = logoBeam)}
@@ -26,4 +26,4 @@
 		<p class="text-center font-title text-xl tracking-widest">Freising - Landshut - München</p>
 		<p class="text-center font-title text-xl tracking-widest">Telefon 0176 / 244 33 906</p>
 	</article>
-</header>
+</div>

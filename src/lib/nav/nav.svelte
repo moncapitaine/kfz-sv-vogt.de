@@ -2,7 +2,7 @@
 	import MenuItem from './menuItem.svelte';
 </script>
 
-<nav data-sveltekit-prefetch class="sm:mt-[10em] container flex flex-row gap-6 justify-center">
+<nav data-sveltekit-prefetch class="flex flex-row gap-6 justify-center">
 	<MenuItem href="/" title="Leistungen" />
 	<MenuItem href="/about" title="Über mich" />
 	<MenuItem href="/contact" title="Kontakt" />
