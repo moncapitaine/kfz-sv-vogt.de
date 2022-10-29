@@ -21,6 +21,10 @@
 	<slot />
 </main>
 
+<div class="h-20">
+	&nbsp;
+</div>
+
 <footer class="fixed bottom-0 border-t-2 pt-2 pb-6 bg-white z-50 w-full">
 	<Nav />
 </footer>
