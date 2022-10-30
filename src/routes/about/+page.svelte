@@ -1,3 +1,8 @@
+<script>
+
+	import { fade } from "svelte/transition";
+
+</script>
 <svelte:head>
 	<title>KFZ-Sachverständigenbüro: Hintergründe</title>
 	<meta
@@ -7,7 +12,7 @@
 	<link rel="canonical" href="https://kfz-sv-vogt.de/about" />
 </svelte:head>
 
-<article class="w-[1024px] ml-2 bg-white opacity-70 p-10 rounded-xl border-gray-300 border-4">
+<article transition:fade={{delay:300, duration: 100}} class="w-[1024px] ml-2 bg-white opacity-70 p-10 rounded-xl border-gray-300 border-4">
 	<h2 class="text-4xl mb-4">Über mich:</h2>
 	<p class="text-xl mb-2 leading-loose">
 		Ich habe mein Hobby zum Beruf gemacht und 1998 eine Lehre zum KFZ-Mechaniker begonnen. Nach 12
