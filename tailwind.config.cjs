@@ -7,7 +7,7 @@ module.exports = {
 		},
 		extend: {
 			colors: {
-				'btn-neutral' : '#D9',
+				'btn-neutral' : '#D9'
 			}
 		}
 	},

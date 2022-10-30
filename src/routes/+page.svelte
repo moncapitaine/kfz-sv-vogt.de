@@ -1,21 +1,18 @@
-<script lang="typescript">
-	import { crossfade, fade, scale, slide } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
+<script lang="ts">
+	import { quintOut } from "svelte/easing";
 	import Icon from '../lib/icon/Icon.svelte';
 	import type { IconName } from '$lib/icon/icon';
-	import fadeScale from '$lib/transition-fade-scale';
 	type CategoryName =
 		| 'schadensgutachten'
 		| 'gebrauchtwagen-check'
 		| 'kostenvoranschlag'
 		| 'oldtimer-gutachten';
 	let selectedCategoryName: CategoryName = 'schadensgutachten';
-	const navClassSelected =
-		"bg-[url('/bg-leistung-selected.svg')] bg-cover bg-center h-18 pl-5 py-2 w-[24em] text-left inline-flex items-center gap-3";
 	const navClass =
-		'text-gray-500 hover:text-black bg-[#d9d9d9] rounded h-18 pl-5 py-2 w-[18em] text-left inline-flex items-center gap-3';
-	const imageClass = 'ml-4 h-50 hidden';
-	const imageClassSelected = 'ml-4 h-50 visible';
+		'my-2 text-gray-500 hover:text-black bg-[#d9d9d9] rounded h-18 pl-5 py-2 w-[18em] text-left inline-flex items-center';
+const navClassSelected =
+		"my-2 bg-[url('/bg-leistung-selected.svg')] bg-cover bg-center h-18 pl-5 py-2 w-[24em] text-left inline-flex items-center";
+	
 	const selectItem = (newCategoryName: CategoryName) => (selectedCategoryName = newCategoryName);
 
 	const categories: Array<{
@@ -49,27 +46,47 @@
 			icon: 'oldtimer'
 		}
 	];
+
+	const appear = (node: HTMLElement) => {
+		return {
+			duration: 400,
+			easing: quintOut,
+			css: (t: number, u: number) => { 
+				return `transform: scale(${t}); height: ${t * 100}%; width: ${t * 100}%`
+			}
+		};
+	};
+	const disappear = (node: HTMLElement) => {
+		return {
+			duration: 400,
+			easing: quintOut,
+			css: (t: number, u: number) => {
+				return `transform: scale(${t}); height: ${t * 100}%; width: ${t * 100}%`
+			}
+		};
+	};
 </script>
 
 <article class="w-[1024px] flex">
-	<nav class="z-20 flex flex-col gap-2 text-2xl pt-12">
+	<nav class="z-20 flex flex-col text-2xl pt-12">
 		{#each categories as category (category.name)}
-			<div animate:flip>
-				<button
-					on:click={() => selectItem(category.name)}
-					type="button"
-					class={selectedCategoryName === category.name ? navClassSelected : navClass}
-				>
-					<Icon class="w-10 h-10" name={category.icon} />
-					{category.title}
-				</button>
+			<button
+				on:click={() => selectItem(category.name)}
+				type="button"
+				class={selectedCategoryName === category.name ? navClassSelected : navClass}
+			>
+				<Icon class="w-10 h-10" name={category.icon} />
+				{category.title}
+			</button>
+			{#if selectedCategoryName === category.name}
 				<img
-					transition:scale
-					class={selectedCategoryName === category.name ? imageClassSelected : imageClass}
+				class='m-0'
+					in:appear
+					out:disappear
 					src={category.imageSource}
 					alt={category.title}
 				/>
-			</div>
+			{/if}
 		{/each}
 	</nav>
 	<aside
@@ -109,3 +126,26 @@
 		{/if}
 	</aside>
 </article>
+
+<!-- <style>
+	@keyframes height2Zero {
+		from {
+			transform: scale(1);
+		}
+		to {
+			transform: scale(0);
+		}
+	}
+	img.disappear {
+		animation-name: height2Zero;
+		animation-duration: 1s;
+		animation-fill-mode: forwards;
+	}
+
+	img.appear {
+		animation-name: height2Zero;
+		animation-duration: 1s;
+		animation-fill-mode: forwards;
+		animation-direction: reverse;
+	}
+</style> -->

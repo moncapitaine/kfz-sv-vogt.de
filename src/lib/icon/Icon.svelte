@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang="ts">
 	import type { IconName } from './icon';
 	export let name: IconName;
 	export let width = '1rem';
