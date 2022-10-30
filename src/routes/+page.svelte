@@ -58,7 +58,7 @@ const navClassSelected =
 	};
 </script>
 
-<article class="w-[1024px] flex sm:flex-row flex-col items-center">
+<article class="w-[1024px] flex sm:flex-row flex-col items-center md:items-start">
 	<nav class="z-20 flex flex-col md:text-2xl md:pt-12">
 		{#each categories as category (category.name)}
 			<button
@@ -80,7 +80,7 @@ const navClassSelected =
 		{/each}
 	</nav>
 	<aside
-		class="z-10 relative border-4 rounded-lg bg-gray-200 p-12 w-full opacity-70 border-gray-300 h-fit ml-[-2em]"
+		class="z-10 relative border-4 rounded-lg bg-gray-200 p-12 w-full opacity-70 border-gray-300 h-fit ml-[-2em] mt-4"
 	>
 		{#if selectedCategoryName === 'schadensgutachten'}
 			<h2 class="text-2xl mb-4">
@@ -98,17 +98,24 @@ const navClassSelected =
 		{/if}
 		{#if selectedCategoryName === 'gebrauchtwagen-check'}
 			<h2>Gebrauchtwagen-Check</h2>
+			<p>Ein Beispiel der ersten von 9 Seiten.</p>
+			<p>
+				<img src="/gebrauchtwagen-check-beispiel.jpg" alt="Gebrauchtwagen-Check Beispiel" />
+			</p>
 		{/if}
 		{#if selectedCategoryName === 'kostenvoranschlag'}
-			Hellas
+			<h2 class="text-2xl mb-4">Kostenvoranschlag</h2>
+			<p class="mb-4">Ein Kostenvoranschlag stellt die „schmale Variante“ eines Kfz-Gutachtens dar.</p>
+			<p class="mb-4">Er ist kostengünstiger und leichter anzufertigen.</p>
+			<p>Er entspricht lediglich einer Vorkalkulation, die einem verbindlichen Angebot gleichkommt.</p>
 		{/if}
 		{#if selectedCategoryName === 'oldtimer-gutachten'}
 			<h2 class="text-2xl mb-4">Oldtimer-Wertgutachten</h2>
-			<p class="text-xl mb-4">
+			<p class="mb-4">
 				Das Wertgutachten für Ihren Oldtimer dient zur Versicherungseinstufung und als Grundlage für
 				einen Kauf oder Verkauf.
 			</p>
-			<ul class="text-xl mb-4 list-disc">
+			<ul class="mb-4 list-disc">
 				<li>Wertdarstellung im Schadenfall</li>
 				<li>Orientierungshilfe bei Kauf oder Verkauf</li>
 				<li>Einstufung bei der Kaskoversicherung</li>
@@ -116,26 +123,3 @@ const navClassSelected =
 		{/if}
 	</aside>
 </article>
-
-<!-- <style>
-	@keyframes height2Zero {
-		from {
-			transform: scale(1);
-		}
-		to {
-			transform: scale(0);
-		}
-	}
-	img.disappear {
-		animation-name: height2Zero;
-		animation-duration: 1s;
-		animation-fill-mode: forwards;
-	}
-
-	img.appear {
-		animation-name: height2Zero;
-		animation-duration: 1s;
-		animation-fill-mode: forwards;
-		animation-direction: reverse;
-	}
-</style> -->

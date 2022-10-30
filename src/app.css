@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 body {
-  @apply bg-[url('/background.png')] bg-cover bg-no-repeat bg-fixed
+  background-size: auto 100%;
+  @apply bg-[url('/background2.png')] bg-right bg-no-repeat bg-fixed
 }
