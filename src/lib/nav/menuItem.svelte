@@ -4,12 +4,13 @@
 	export let href = '/';
 	export let title = 'Title';
 
-	let active = $page.url.pathname === href;
+	let active = false
+	$:active =  $page.url.pathname === href;
+	$:console.log(title, $page.url.pathname, href)
 </script>
 
 <a class:inactive={!active} class:active {href} on:click={() => sideMenuOpen.update(() => false)}
-	>{title}</a
->
+	>{title}</a>
 
 <style>
 	a.inactive {
