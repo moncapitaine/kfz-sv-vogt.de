@@ -9,9 +9,9 @@
 		| 'oldtimer-gutachten';
 	let selectedCategoryName: CategoryName = 'schadensgutachten';
 	const navClass =
-		'my-2 text-gray-500 hover:text-black bg-[#d9d9d9] rounded h-18 pl-5 py-2 w-[18em] text-left inline-flex items-center';
+		'sm:my-2 text-gray-500 hover:text-black bg-[#d9d9d9] md:rounded md:h-18 pl-5 md:py-2 pr-3 md:pr-2 md:w-[18em] text-left inline-flex items-center';
 const navClassSelected =
-		"my-2 bg-[url('/bg-leistung-selected.svg')] bg-cover bg-center h-18 pl-5 py-2 w-[24em] text-left inline-flex items-center";
+		"sm:my-2 bg-[url('/bg-leistung-selected.svg')] bg-cover bg-center md:h-18 pl-5 md:py-2 md:w-[24em] text-left inline-flex items-center";
 	
 	const selectItem = (newCategoryName: CategoryName) => (selectedCategoryName = newCategoryName);
 
@@ -47,7 +47,7 @@ const navClassSelected =
 		}
 	];
 
-	const appear = (node: HTMLElement) => {
+	const collapse = (node: HTMLElement) => {
 		return {
 			duration: 400,
 			easing: quintOut,
@@ -56,19 +56,10 @@ const navClassSelected =
 			}
 		};
 	};
-	const disappear = (node: HTMLElement) => {
-		return {
-			duration: 400,
-			easing: quintOut,
-			css: (t: number, u: number) => {
-				return `transform: scale(${t}); height: ${t * 100}%; width: ${t * 100}%`
-			}
-		};
-	};
 </script>
 
-<article class="w-[1024px] flex">
-	<nav class="z-20 flex flex-col text-2xl pt-12">
+<article class="w-[1024px] flex sm:flex-row flex-col items-center">
+	<nav class="z-20 flex flex-col md:text-2xl md:pt-12">
 		{#each categories as category (category.name)}
 			<button
 				on:click={() => selectItem(category.name)}
@@ -80,9 +71,8 @@ const navClassSelected =
 			</button>
 			{#if selectedCategoryName === category.name}
 				<img
-				class='m-0'
-					in:appear
-					out:disappear
+				class='m-0 hidden sm:block'
+					transition:collapse
 					src={category.imageSource}
 					alt={category.title}
 				/>

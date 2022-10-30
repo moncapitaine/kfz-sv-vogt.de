@@ -5,8 +5,8 @@
 	let logo = logoNormal;
 </script>
 
-<div class="flex justify-center">
-	<a href="/" class="" alt="Home">
+<div class="flex flex-col sm:flex-row sm:gap-4 justify-center items-center">
+	<a href="/" class="absolute opacity-20 sm:opacity-100 sm:relative flex justify-center" alt="Home">
 		<img
 			on:mouseenter={() => (logo = logoBeam)}
 			on:blur={() => (logo = logoNormal)}
@@ -17,13 +17,13 @@
 		/>
 	</a>
 	<article class="flex flex-col justify-center">
-		<h1 class="uppercase text-center font-title text-2xl tracking-widest">
+		<h1 class="uppercase text-center font-title text-xl md:text-2xl tracking-widest">
 			KFZ-Sach&shy;verständigen&shy;büro
 		</h1>
-		<h2 class="uppercase text-center font-title text-4xl font-semibold tracking-widest">
+		<h2 class="uppercase text-center font-title text-lg sm:text-2xl md:text-4xl font-semibold tracking-widest">
 			Max Vogt
 		</h2>
-		<p class="text-center font-title text-xl tracking-widest">Freising - Landshut - München</p>
-		<p class="text-center font-title text-xl tracking-widest">Telefon 0176 / 244 33 906</p>
+		<p class="text-center font-title text-sm sm:text-lg tracking-widest">Freising - Landshut - München</p>
+		<p class="text-center font-title text-sm  sm:text-lg tracking-widest">Telefon 0176 / 244 33 906</p>
 	</article>
 </div>
