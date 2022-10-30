@@ -17,15 +17,11 @@
 	<Header />
 </header>
 
-<main class="container mt-12 flex justify-center absolute">
+<main class="container my-12 flex justify-center">
 	<slot />
 </main>
 
-<div class="h-20">
-	&nbsp;
-</div>
-
-<footer class="fixed bottom-0 opacity-70 border-t-2 pt-2 pb-6 bg-white z-50 w-full">
+<footer class="fixed bottom-0 opacity-70 border-t-2 h-12 bg-white z-50 w-full">
 	<Nav />
 </footer>
 
