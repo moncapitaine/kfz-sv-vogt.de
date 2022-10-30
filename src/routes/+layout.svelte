@@ -13,7 +13,7 @@
 	<link rel="canonical" href="https://kfz-sv-vogt.de" />
 </svelte:head>
 
-<header class="container mt-12">
+<header class="container mt-2 sm:mt-12">
 	<Header />
 </header>
 
