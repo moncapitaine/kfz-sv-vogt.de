@@ -21,7 +21,7 @@
 	<slot />
 </main>
 
-<footer class="fixed bottom-0 opacity-70 border-t-2 h-12 bg-white z-50 w-full">
+<footer class="fixed bottom-0 border-t-2 h-12 z-50 w-full">
 	<Nav />
 </footer>
 
