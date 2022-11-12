@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
 	import { quintOut } from "svelte/easing";
 	import Icon from '../lib/icon/Icon.svelte';
 	import type { IconName } from '$lib/icon/icon';
@@ -49,7 +50,7 @@ const navClassSelected =
 
 	const collapse = (node: HTMLElement) => {
 		return {
-			duration: 400,
+			duration: 300,
 			easing: quintOut,
 			css: (t: number, u: number) => { 
 				return `transform: scale(${t}); height: ${t * 100}%; width: ${t * 100}%`
@@ -58,7 +59,7 @@ const navClassSelected =
 	};
 </script>
 
-<article class="w-[1024px] flex sm:flex-row flex-col items-center md:items-start">
+<article 	in:fade={{ delay: 100, duration: 300 }} out:fade={{ delay: 0, duration: 100 }} class="w-[1024px] flex sm:flex-row flex-col items-center md:items-start">
 	<nav class="z-20 flex flex-col md:text-2xl md:pt-12">
 		{#each categories as category (category.name)}
 			<button
