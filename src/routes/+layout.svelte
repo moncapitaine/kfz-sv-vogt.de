@@ -5,7 +5,6 @@
 </script>
 
 <svelte:head>
-	<title>Sachverständigenbüro: KFZ Gutachten in Freising</title>
 	<meta
 		name="description"
 		content="Schadensgutachten und Wertgutachten für Kraftfahrzeuge in Freising"

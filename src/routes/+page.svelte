@@ -60,6 +60,7 @@ const navClassSelected =
 </script>
 
 <svelte:head>
+	<title>Sachverständigenbüro: KFZ Gutachten in Freising</title>
 	<link rel="canonical" href="https://kfz-sv-vogt.de" />
 </svelte:head>
 
