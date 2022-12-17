@@ -59,6 +59,10 @@ const navClassSelected =
 	};
 </script>
 
+<svelte:head>
+	<link rel="canonical" href="https://kfz-sv-vogt.de" />
+</svelte:head>
+
 <article 	in:fade={{ delay: 100, duration: 300 }} out:fade={{ delay: 0, duration: 100 }} class="w-[1024px] flex sm:flex-row flex-col items-center md:items-start">
 	<nav class="z-20 flex flex-col md:text-2xl md:pt-12">
 		{#each categories as category (category.name)}
