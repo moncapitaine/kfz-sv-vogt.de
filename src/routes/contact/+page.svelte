@@ -18,7 +18,8 @@
 			<p class="text-xl">Max Vogt</p>
 			<p class="text-xl">Attachinger Weg 37</p>
 			<p class="text-xl">85356 Freising</p>
-			<p class="text-xl"><a href="tel:+49 (0) 176 / 244 33 906">Telefon 0176 / 244 33 906</a></p>
+			<p class="text-xl"><a href='tel:+49 (0) 08161 / 862 4020'>Telefon 08161 / 862 4020</a></p>
+			<p class="text-xl"><a href="tel:+49 (0) 176 / 244 33 906">Mobil 0176 / 244 33 906</a></p>
 			<a class="text-xl pt-2 block" href="mailto:max.vogt@kfz-sv-vogt.de?subject=Anfrage%20KFZ-SV"
 				>max.vogt@kfz-sv-vogt.de</a
 			>

@@ -24,6 +24,7 @@
 			Max Vogt
 		</h2>
 		<p class="text-center font-title text-sm sm:text-lg tracking-widest">Freising - Erding -Landshut - München</p>
-		<p class="text-center font-title text-sm  sm:text-lg tracking-widest"><a href='tel:+49 (0) 176 / 244 33 906'>Telefon 0176 / 244 33 906</a></p>
+		<p class="text-center font-title text-sm  sm:text-lg tracking-widest"><a href='tel:+49 (0) 08161 / 862 4020'>Telefon 08161 / 862 4020</a></p>
+		<p class="text-center font-title text-sm  sm:text-lg tracking-widest"><a href='tel:+49 (0) 176 / 244 33 906'>Mobil 0176 / 244 33 906</a></p>
 	</article>
 </div>

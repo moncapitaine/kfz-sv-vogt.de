@@ -14,7 +14,7 @@
 >
 	<h2 class="text-4xl mb-4">Angaben gemäß § 5 TMG:</h2>
 	<p>Max Vogt KFZ-Sachverständigenbüro Attachingerweg 37 85356 Freising</p>
-	<p>Kontakt Telefon: 0176/244 33 906 E-Mail: Max.Vogt@kfz-sv-vogt.de</p>
+	<p>Kontakt Telefon: 08161 / 862 4020, Mobil: 0176/244 33 906, E-Mail: Max.Vogt@kfz-sv-vogt.de</p>
 	<p>
 		Umsatzsteuer-ID Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz: DE354963041
 	</p>
