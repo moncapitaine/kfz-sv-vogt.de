@@ -20,11 +20,23 @@
 		<h1 class="uppercase text-center font-title text-xl md:text-2xl tracking-widest">
 			KFZ-Sach&shy;verständigen&shy;büro
 		</h1>
-		<h2 class="uppercase text-center font-title text-lg sm:text-2xl md:text-4xl font-semibold tracking-widest">
+		<h2
+			class="uppercase text-center font-title text-lg sm:text-2xl md:text-4xl font-semibold tracking-widest"
+		>
 			Max Vogt
 		</h2>
-		<p class="text-center font-title text-sm sm:text-lg tracking-widest">Freising - Erding -Landshut - München</p>
-		<p class="text-center font-title text-sm  sm:text-lg tracking-widest"><a href='tel:+49 (0) 08161 / 862 4020'>Telefon 08161 / 862 4020</a></p>
-		<p class="text-center font-title text-sm  sm:text-lg tracking-widest"><a href='tel:+49 (0) 176 / 244 33 906'>Mobil 0176 / 244 33 906</a></p>
+		<p class="text-center font-title text-sm sm:text-lg tracking-widest">
+			Freising - Erding -Landshut - München
+		</p>
+		<div class="flex flex-col content-center flex-wrap">
+			<div class="flex flex-row gap-2">
+				<div>Telefon</div>
+				<div class="self-end"><a href="tel:+49 (0) 08161 / 862 4020">08161 / 862 4020</a></div>
+			</div>
+			<div class="flex flex-row gap-2">
+				<div>Mobil</div>
+				<div><a href="tel:+49 (0) 176 / 244 33 906"> 0176 / 244 33 906</a></div>
+			</div>
+		</div>
 	</article>
 </div>
